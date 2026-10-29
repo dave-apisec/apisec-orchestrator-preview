@@ -1,0 +1,81 @@
+﻿2026-10-26T21:51:29.0816920Z Current runner version: '2.338.2'
+2026-10-26T21:51:29.0820600Z Runner name: 'mac-runner'
+2026-10-26T21:51:29.0821030Z Runner group name: 'Default'
+2026-10-26T21:51:29.0821560Z Machine name: 'MacBook-Pro'
+2026-10-26T21:51:29.0823750Z ##[group]GITHUB_TOKEN Permissions
+2026-10-26T21:51:29.0824700Z Actions: read
+2026-10-26T21:51:29.0825030Z Contents: read
+2026-10-26T21:51:29.0825340Z Metadata: read
+2026-10-26T21:51:29.0825660Z ##[endgroup]
+2026-10-26T21:51:29.0826560Z Secret source: Actions
+2026-10-26T21:51:29.0827090Z Cache mode: write
+2026-10-26T21:51:29.0827450Z Prepare workflow directory
+2026-10-26T21:51:29.1266890Z Prepare all required actions
+2026-10-26T21:51:29.1289020Z Getting action download info
+2026-10-26T21:51:30.5909000Z Download action repository 'actions/create-github-app-token@v3' (SHA:64ab729a6294000f5aa4a4bc0b73d1f32bc45510)
+2026-10-26T21:51:31.0932080Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-26T21:51:31.7304610Z Uses: apisec-inc/apisec-orchestrator/.github/workflows/scan.yml@refs/heads/e2e/github-app (0ac104d53b9f7667c5808cf5f19018d43ea5e69f)
+2026-10-26T21:51:31.7306160Z ##[group] Inputs
+2026-10-26T21:51:31.7306410Z   dry_run: true
+2026-10-26T21:51:31.7306560Z   force_full_scan: true
+2026-10-26T21:51:31.7306860Z   max_repos: 0
+2026-10-26T21:51:31.7307010Z   throughput: 0
+2026-10-26T21:51:31.7307150Z   runner: 
+2026-10-26T21:51:31.7307290Z   run_profile: 
+2026-10-26T21:51:31.7307430Z ##[endgroup]
+2026-10-26T21:51:31.7307570Z Complete job name: scan / Plan
+2026-10-26T21:51:31.7673450Z ##[group]Run actions/create-github-app-token@v3
+2026-10-26T21:51:31.7673790Z with:
+2026-10-26T21:51:31.7673930Z   client-id: 1234567
+2026-10-26T21:51:31.7677200Z   private-key: ***
+2026-10-26T21:51:31.7677360Z   owner: acme
+2026-10-26T21:51:31.7677530Z   permission-contents: read
+2026-10-26T21:51:31.7677700Z   skip-token-revoke: false
+2026-10-26T21:51:31.7677900Z   github-api-url: https://api.github.com
+2026-10-26T21:51:31.7678260Z env:
+2026-10-26T21:51:31.7678510Z   ORGSCAN_SPEC: apisec-orgscan @ git+https://github.com/apisec-inc/apisec-orchestrator@e2e/github-app
+2026-10-26T21:51:31.7678780Z   USE_APP: true
+2026-10-26T21:51:31.7678910Z ##[endgroup]
+2026-10-26T21:51:31.9664410Z Input 'repositories' is not set. Creating token for all repositories owned by acme.
+2026-10-26T21:51:32.4463320Z ##[group]Run actions/setup-python@v5
+2026-10-26T21:51:32.4463610Z with:
+2026-10-26T21:51:32.4463800Z   python-version: 3.11
+2026-10-26T21:51:32.4464030Z   check-latest: false
+2026-10-26T21:51:32.4465620Z   token: ***
+2026-10-26T21:51:32.4465850Z   update-environment: true
+2026-10-26T21:51:32.4466070Z   allow-prereleases: false
+2026-10-26T21:51:32.4466320Z   freethreaded: false
+2026-10-26T21:51:32.4466550Z env:
+2026-10-26T21:51:32.4466890Z   ORGSCAN_SPEC: apisec-orgscan @ git+https://github.com/apisec-inc/apisec-orchestrator@e2e/github-app
+2026-10-26T21:51:32.4467280Z   USE_APP: true
+2026-10-26T21:51:32.4467490Z ##[endgroup]
+2026-10-26T21:51:32.5262790Z ##[group]Installed versions
+2026-10-26T21:51:32.5265180Z Version 3.11 was not found in the local cache
+2026-10-26T21:51:32.5329480Z (node:6077) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-26T21:51:33.3905740Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-26T21:51:33.4013810Z Version 3.11 is available for downloading
+2026-10-26T21:51:33.4014200Z Download from "https://github.com/actions/python-versions/releases/download/3.11.9-9947079978/python-3.11.9-darwin-arm64.tar.gz"
+2026-10-26T21:51:38.5021300Z Extract downloaded archive
+2026-10-26T21:51:38.5045020Z Unexpected error attempting to determine if executable file exists '/Library/TeX/texbin/latexmk/tar': Error: ENOTDIR: not a directory, stat '/Library/TeX/texbin/latexmk/tar'
+2026-10-26T21:51:38.5046040Z Unexpected error attempting to determine if executable file exists '/Library/TeX/texbin/pdflatex/tar': Error: ENOTDIR: not a directory, stat '/Library/TeX/texbin/pdflatex/tar'
+2026-10-26T21:51:38.5061720Z Unexpected error attempting to determine if executable file exists '/Library/TeX/texbin/latexmk/tar': Error: ENOTDIR: not a directory, stat '/Library/TeX/texbin/latexmk/tar'
+2026-10-26T21:51:38.5062590Z Unexpected error attempting to determine if executable file exists '/Library/TeX/texbin/pdflatex/tar': Error: ENOTDIR: not a directory, stat '/Library/TeX/texbin/pdflatex/tar'
+2026-10-26T21:51:38.5132470Z Unexpected error attempting to determine if executable file exists '/Library/TeX/texbin/latexmk/tar': Error: ENOTDIR: not a directory, stat '/Library/TeX/texbin/latexmk/tar'
+2026-10-26T21:51:38.5134630Z Unexpected error attempting to determine if executable file exists '/Library/TeX/texbin/pdflatex/tar': Error: ENOTDIR: not a directory, stat '/Library/TeX/texbin/pdflatex/tar'
+2026-10-26T21:51:38.5138110Z Unexpected error attempting to determine if executable file exists '/Library/TeX/texbin/latexmk/tar': Error: ENOTDIR: not a directory, stat '/Library/TeX/texbin/latexmk/tar'
+2026-10-26T21:51:38.5138990Z Unexpected error attempting to determine if executable file exists '/Library/TeX/texbin/pdflatex/tar': Error: ENOTDIR: not a directory, stat '/Library/TeX/texbin/pdflatex/tar'
+2026-10-26T21:51:38.5140260Z [command]/usr/bin/tar xz -C /private/tmp/claude-501/-Users-someone-cc-projects-apisec-surface/90aa7b04-e30a-4741-b1a9-b24e20ff5e3b/scratchpad/actions-runner/_work/_temp/a5a569ae-5a4c-4773-a8ab-32109f459082 -f /private/tmp/claude-501/-Users-someone-cc-projects-apisec-surface/90aa7b04-e30a-4741-b1a9-b24e20ff5e3b/scratchpad/actions-runner/_work/_temp/a98713ee-ff5e-4786-9bf0-d8307550ad2d
+2026-10-26T21:51:38.5758070Z Execute installation script
+2026-10-26T21:51:38.5762750Z Unexpected error attempting to determine if executable file exists '/Library/TeX/texbin/latexmk/bash': Error: ENOTDIR: not a directory, stat '/Library/TeX/texbin/latexmk/bash'
+2026-10-26T21:51:38.5763600Z Unexpected error attempting to determine if executable file exists '/Library/TeX/texbin/pdflatex/bash': Error: ENOTDIR: not a directory, stat '/Library/TeX/texbin/pdflatex/bash'
+2026-10-26T21:51:38.5767710Z Unexpected error attempting to determine if executable file exists '/Library/TeX/texbin/latexmk/bash': Error: ENOTDIR: not a directory, stat '/Library/TeX/texbin/latexmk/bash'
+2026-10-26T21:51:38.5768760Z Unexpected error attempting to determine if executable file exists '/Library/TeX/texbin/pdflatex/bash': Error: ENOTDIR: not a directory, stat '/Library/TeX/texbin/pdflatex/bash'
+2026-10-26T21:51:38.5843340Z Check if Python hostedtoolcache folder exist...
+2026-10-26T21:51:38.5843620Z Creating Python hostedtoolcache folder...
+2026-10-26T21:51:38.5872580Z ##[error]mkdir: /Users/runner: Permission denied
+2026-10-26T21:51:38.5875820Z ##[error]The process '/bin/bash' failed with exit code 1
+2026-10-26T21:51:38.6082820Z Post job cleanup.
+2026-10-26T21:51:38.9862970Z Token revoked
+2026-10-26T21:51:39.0091840Z Evaluate and set job outputs
+2026-10-26T21:51:39.0094720Z Cleaning up orphan processes
+2026-10-26T21:51:39.0251120Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

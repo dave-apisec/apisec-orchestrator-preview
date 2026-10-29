@@ -1,0 +1,106 @@
+﻿2026-10-26T22:05:47.6811388Z Current runner version: '2.338.2'
+2026-10-26T22:05:47.6814483Z Runner name: 'linux-runner'
+2026-10-26T22:05:47.6814999Z Runner group name: 'Default'
+2026-10-26T22:05:47.6815817Z Machine name: '0c6c92f39413'
+2026-10-26T22:05:47.6818097Z ##[group]GITHUB_TOKEN Permissions
+2026-10-26T22:05:47.6819635Z Actions: read
+2026-10-26T22:05:47.6821681Z Contents: read
+2026-10-26T22:05:47.6822368Z Metadata: read
+2026-10-26T22:05:47.6823097Z ##[endgroup]
+2026-10-26T22:05:47.6824169Z Secret source: Actions
+2026-10-26T22:05:47.6824866Z Cache mode: write
+2026-10-26T22:05:47.6825300Z Prepare workflow directory
+2026-10-26T22:05:47.7232730Z Prepare all required actions
+2026-10-26T22:05:47.7255194Z Getting action download info
+2026-10-26T22:05:48.0956667Z Download action repository 'actions/create-github-app-token@v3' (SHA:64ab729a6294000f5aa4a4bc0b73d1f32bc45510)
+2026-10-26T22:05:48.5538453Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-26T22:05:49.1881249Z Uses: apisec-inc/apisec-orchestrator/.github/workflows/scan.yml@refs/heads/e2e/github-app (0ac104d53b9f7667c5808cf5f19018d43ea5e69f)
+2026-10-26T22:05:49.1883165Z ##[group] Inputs
+2026-10-26T22:05:49.1883597Z   dry_run: true
+2026-10-26T22:05:49.1883894Z   force_full_scan: false
+2026-10-26T22:05:49.1884355Z   max_repos: 0
+2026-10-26T22:05:49.1884646Z   throughput: 0
+2026-10-26T22:05:49.1884930Z   runner: 
+2026-10-26T22:05:49.1885200Z   run_profile: 
+2026-10-26T22:05:49.1885482Z ##[endgroup]
+2026-10-26T22:05:49.1885778Z Complete job name: scan / Plan
+2026-10-26T22:05:49.2299737Z ##[group]Run actions/create-github-app-token@v3
+2026-10-26T22:05:49.2300326Z with:
+2026-10-26T22:05:49.2300613Z   client-id: 1234567
+2026-10-26T22:05:49.2306320Z   private-key: ***
+2026-10-26T22:05:49.2306696Z   owner: acme-target
+2026-10-26T22:05:49.2307117Z   permission-contents: read
+2026-10-26T22:05:49.2307441Z   skip-token-revoke: false
+2026-10-26T22:05:49.2307864Z   github-api-url: https://api.github.com
+2026-10-26T22:05:49.2308285Z env:
+2026-10-26T22:05:49.2308816Z   ORGSCAN_SPEC: apisec-orgscan @ git+https://github.com/apisec-inc/apisec-orchestrator@e2e/github-app
+2026-10-26T22:05:49.2309330Z   USE_APP: true
+2026-10-26T22:05:49.2309696Z ##[endgroup]
+2026-10-26T22:05:49.2751203Z Input 'repositories' is not set. Creating token for all repositories owned by acme-target.
+2026-10-26T22:05:49.5394238Z Failed to create token for "acme-target" (attempt 1): Not Found - https://docs.github.com/rest/apps/apps#get-a-user-installation-for-the-authenticated-app
+2026-10-26T22:05:49.5412617Z RequestError [HttpError]: Not Found - https://docs.github.com/rest/apps/apps#get-a-user-installation-for-the-authenticated-app
+2026-10-26T22:05:49.5414121Z     at fetchWrapper (/runner/_work/_actions/actions/create-github-app-token/v3/dist/main.cjs:22334:11)
+2026-10-26T22:05:49.5414989Z     at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+2026-10-26T22:05:49.5416018Z     at async hook4 (/runner/_work/_actions/actions/create-github-app-token/v3/dist/main.cjs:23623:18)
+2026-10-26T22:05:49.5417018Z     at async getTokenFromOwner (/runner/_work/_actions/actions/create-github-app-token/v3/dist/main.cjs:24143:20)
+2026-10-26T22:05:49.5417973Z     at async pRetry (/runner/_work/_actions/actions/create-github-app-token/v3/dist/main.cjs:23976:22)
+2026-10-26T22:05:49.5418869Z     at async main (/runner/_work/_actions/actions/create-github-app-token/v3/dist/main.cjs:24005:55) {
+2026-10-26T22:05:49.5419554Z   status: 404,
+2026-10-26T22:05:49.5419975Z   request: {
+2026-10-26T22:05:49.5420388Z     method: 'GET',
+2026-10-26T22:05:49.5420973Z     url: 'https://api.github.com/users/acme-target/installation',
+2026-10-26T22:05:49.5421640Z     headers: {
+2026-10-26T22:05:49.5422116Z       accept: 'application/vnd.github.v3+json',
+2026-10-26T22:05:49.5422739Z       'user-agent': 'actions/create-github-app-token',
+2026-10-26T22:05:49.5423458Z       authorization: 'bearer [REDACTED]'
+2026-10-26T22:05:49.5424526Z     },
+2026-10-26T22:05:49.5425064Z     request: { hook: [Function: bound hook4] AsyncFunction }
+2026-10-26T22:05:49.5425627Z   },
+2026-10-26T22:05:49.5426018Z   response: {
+2026-10-26T22:05:49.5426573Z     url: 'https://api.github.com/users/acme-target/installation',
+2026-10-26T22:05:49.5427250Z     status: 404,
+2026-10-26T22:05:49.5427731Z     headers: {
+2026-10-26T22:05:49.5428378Z       'access-control-allow-origin': '*',
+2026-10-26T22:05:49.5430185Z       'access-control-expose-headers': 'ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset, Warning',
+2026-10-26T22:05:49.5431724Z       'content-encoding': 'gzip',
+2026-10-26T22:05:49.5432250Z       'content-security-policy': "default-src 'none'",
+2026-10-26T22:05:49.5432849Z       'content-type': 'application/json; charset=utf-8',
+2026-10-26T22:05:49.5433513Z       date: 'Mon, 26 Oct 2026 22:05:49 GMT',
+2026-10-26T22:05:49.5434172Z       'referrer-policy': 'origin-when-cross-origin, strict-origin-when-cross-origin',
+2026-10-26T22:05:49.5434819Z       server: 'github.com',
+2026-10-26T22:05:49.5435410Z       'strict-transport-security': 'max-age=31536000; includeSubdomains; preload',
+2026-10-26T22:05:49.5436125Z       'transfer-encoding': 'chunked',
+2026-10-26T22:05:49.5436862Z       vary: 'Accept-Encoding, Accept, X-Requested-With',
+2026-10-26T22:05:49.5437664Z       'x-content-type-options': 'nosniff',
+2026-10-26T22:05:49.5439338Z       'x-frame-options': 'deny',
+2026-10-26T22:05:49.5439950Z       'x-github-api-version-selected': '2022-11-28',
+2026-10-26T22:05:49.5440533Z       'x-github-edge-region': 'westus3',
+2026-10-26T22:05:49.5441075Z       'x-github-media-type': 'github.v3; format=json',
+2026-10-26T22:05:49.5441692Z       'x-github-request-id': 'F418:2BFE13:4DDCC:538E7:6ADFCEBD',
+2026-10-26T22:05:49.5442299Z       'x-xss-protection': '0'
+2026-10-26T22:05:49.5442741Z     },
+2026-10-26T22:05:49.5443266Z     data: {
+2026-10-26T22:05:49.5444443Z       message: 'Not Found',
+2026-10-26T22:05:49.5445519Z       documentation_url: 'https://docs.github.com/rest/apps/apps#get-a-user-installation-for-the-authenticated-app',
+2026-10-26T22:05:49.5446903Z       status: '404'
+2026-10-26T22:05:49.5447418Z     }
+2026-10-26T22:05:49.5447850Z   },
+2026-10-26T22:05:49.5448282Z   [cause]: undefined
+2026-10-26T22:05:49.5448742Z }
+2026-10-26T22:05:49.5469309Z ##[error]Not Found - https://docs.github.com/rest/apps/apps#get-a-user-installation-for-the-authenticated-app
+2026-10-26T22:05:49.5852618Z ##[group]Run echo "::error title=APIsec Surface::GitHub App $APP_ID (ORCHESTRATOR_APP_ID) could not get a token for '$OWNER'. Install the app on that org and grant it Contents: read and Metadata: read, or check ORCHESTRATOR_APP_PRIVATE_KEY."
+2026-10-26T22:05:49.5854317Z [36;1mecho "::error title=APIsec Surface::GitHub App $APP_ID (ORCHESTRATOR_APP_ID) could not get a token for '$OWNER'. Install the app on that org and grant it Contents: read and Metadata: read, or check ORCHESTRATOR_APP_PRIVATE_KEY."[0m
+2026-10-26T22:05:49.5855272Z [36;1mexit 1[0m
+2026-10-26T22:05:49.5860467Z shell: /usr/bin/bash -e {0}
+2026-10-26T22:05:49.5860877Z env:
+2026-10-26T22:05:49.5861446Z   ORGSCAN_SPEC: apisec-orgscan @ git+https://github.com/apisec-inc/apisec-orchestrator@e2e/github-app
+2026-10-26T22:05:49.5862063Z   USE_APP: true
+2026-10-26T22:05:49.5862428Z   APP_ID: 1234567
+2026-10-26T22:05:49.5862812Z   OWNER: acme-target
+2026-10-26T22:05:49.5863353Z ##[endgroup]
+2026-10-26T22:05:49.5902594Z ##[error]GitHub App 1234567 (ORCHESTRATOR_APP_ID) could not get a token for 'acme-target'. Install the app on that org and grant it Contents: read and Metadata: read, or check ORCHESTRATOR_APP_PRIVATE_KEY.
+2026-10-26T22:05:49.5906142Z ##[error]Process completed with exit code 1.
+2026-10-26T22:05:49.6083560Z Post job cleanup.
+2026-10-26T22:05:49.6470569Z Token is not set
+2026-10-26T22:05:49.6533454Z Evaluate and set job outputs
+2026-10-26T22:05:49.6538362Z Cleaning up orphan processes

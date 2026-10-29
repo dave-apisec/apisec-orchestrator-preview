@@ -85,6 +85,19 @@ role, only repositories this workflow has uploaded before are matched by numeric
 that only the GitHub Action has scanned gets a second application. If a repository already has two
 applications, the run log warns and names both; the scan updates the one bound to its name.
 
+## When scans fail
+
+A run with failed jobs still scans every other repository, and failed repositories are retried on the
+next run. To see why jobs failed, run [`tools/surface_failures.py`](tools/README.md) on any machine
+with the GitHub CLI logged in to your org:
+
+```
+python3 surface_failures.py OWNER/REPO --since 7d
+```
+
+It writes a summary of every failed job (which repository, why, and what to do) and a zip of the
+redacted logs to send to APIsec.
+
 ## Updates
 
 Your workflow calls `scan.yml@v1`. Each release moves `v1`, and every run installs the newest 1.x of

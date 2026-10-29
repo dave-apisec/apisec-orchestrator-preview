@@ -1,0 +1,208 @@
+﻿2026-10-21T08:06:27.6295976Z Current runner version: '2.338.0'
+2026-10-21T08:06:27.6334365Z ##[group]Runner Image Provisioner
+2026-10-21T08:06:27.6335874Z Hosted Compute Agent
+2026-10-21T08:06:27.6336973Z Version: 20261015.610
+2026-10-21T08:06:27.6338154Z Commit: 267fdb4e8bbec4ab5ea31367f3a00d5c480c7656
+2026-10-21T08:06:27.6339932Z Build Date: 2026-10-14T17:06:54Z
+2026-10-21T08:06:27.6341222Z Worker ID: {5e0bdadc-00b1-4941-8813-055d13b2d9ee}
+2026-10-21T08:06:27.6342585Z Region: eastus
+2026-10-21T08:06:27.6343624Z Cloud: Azure
+2026-10-21T08:06:27.6345133Z ##[endgroup]
+2026-10-21T08:06:27.6347687Z ##[group]Operating System
+2026-10-21T08:06:27.6349169Z Ubuntu
+2026-10-21T08:06:27.6350162Z 24.04.5
+2026-10-21T08:06:27.6351268Z LTS
+2026-10-21T08:06:27.6352423Z ##[endgroup]
+2026-10-21T08:06:27.6353469Z ##[group]Runner Image
+2026-10-21T08:06:27.6354698Z Image: ubuntu-24.04
+2026-10-21T08:06:27.6355756Z Version: 20261018.339.1
+2026-10-21T08:06:27.6358024Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261018.339/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-21T08:06:27.6361134Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261018.339
+2026-10-21T08:06:27.6363057Z ##[endgroup]
+2026-10-21T08:06:27.6365259Z ##[group]GITHUB_TOKEN Permissions
+2026-10-21T08:06:27.6368023Z Actions: read
+2026-10-21T08:06:27.6369324Z Contents: read
+2026-10-21T08:06:27.6370486Z Metadata: read
+2026-10-21T08:06:27.6371447Z ##[endgroup]
+2026-10-21T08:06:27.6374892Z Secret source: Actions
+2026-10-21T08:06:27.6376602Z Cache mode: write
+2026-10-21T08:06:27.6377949Z Prepare workflow directory
+2026-10-21T08:06:27.6942767Z Prepare all required actions
+2026-10-21T08:06:27.7012495Z Getting action download info
+2026-10-21T08:06:27.9186680Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-21T08:06:28.1255446Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-21T08:06:28.1680752Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-21T08:06:28.4315928Z Uses: apisec-inc/apisec-orchestrator/.github/workflows/scan.yml@refs/tags/v1 (a27496defa6618533307d65e42c68d82eb816527)
+2026-10-21T08:06:28.4321008Z ##[group] Inputs
+2026-10-21T08:06:28.4321957Z   dry_run: false
+2026-10-21T08:06:28.4322473Z   force_full_scan: false
+2026-10-21T08:06:28.4323417Z   max_repos: 0
+2026-10-21T08:06:28.4323934Z   throughput: 0
+2026-10-21T08:06:28.4324657Z   runner: 
+2026-10-21T08:06:28.4325323Z   run_profile: 
+2026-10-21T08:06:28.4326000Z ##[endgroup]
+2026-10-21T08:06:28.4326545Z Complete job name: scan / Scan cx-jaxrs-modeshape
+2026-10-21T08:06:28.5093396Z ##[group]Run actions/setup-python@v5
+2026-10-21T08:06:28.5094382Z with:
+2026-10-21T08:06:28.5094864Z   python-version: 3.11
+2026-10-21T08:06:28.5095383Z   check-latest: false
+2026-10-21T08:06:28.5099615Z   token: ***
+2026-10-21T08:06:28.5100131Z   update-environment: true
+2026-10-21T08:06:28.5100678Z   allow-prereleases: false
+2026-10-21T08:06:28.5101229Z   freethreaded: false
+2026-10-21T08:06:28.5102035Z env:
+2026-10-21T08:06:28.5102519Z   ORGSCAN_SPEC: apisec-orgscan==1.0.0
+2026-10-21T08:06:28.5103099Z ##[endgroup]
+2026-10-21T08:06:28.7257701Z (node:1961) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-21T08:06:28.7260417Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-21T08:06:28.7292451Z ##[group]Installed versions
+2026-10-21T08:06:28.7307782Z Successfully set up CPython (3.11.17)
+2026-10-21T08:06:28.7309771Z ##[endgroup]
+2026-10-21T08:06:28.7649496Z ##[group]Run pip install --quiet "$ORGSCAN_SPEC" "apisec-surface==$CLI_VERSION"
+2026-10-21T08:06:28.7651325Z [36;1mpip install --quiet "$ORGSCAN_SPEC" "apisec-surface==$CLI_VERSION"[0m
+2026-10-21T08:06:28.7652766Z [36;1mapisec-surface telemetry off || true[0m
+2026-10-21T08:06:28.8000013Z shell: /usr/bin/bash -e {0}
+2026-10-21T08:06:28.8000647Z env:
+2026-10-21T08:06:28.8001820Z   ORGSCAN_SPEC: apisec-orgscan==1.0.0
+2026-10-21T08:06:28.8009611Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-21T08:06:28.8011090Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+2026-10-21T08:06:28.8012551Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-21T08:06:28.8013867Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-21T08:06:28.8017732Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-21T08:06:28.8019489Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+2026-10-21T08:06:28.8020889Z   CLI_VERSION: 1.0.0
+2026-10-21T08:06:28.8021700Z ##[endgroup]
+2026-10-21T08:06:35.9294540Z 
+2026-10-21T08:06:35.9296050Z [notice] A new release of pip is available: 26.2.1 -> 26.2.2
+2026-10-21T08:06:35.9299531Z [notice] To update, run: pip install --upgrade pip
+2026-10-21T08:06:36.2982851Z Telemetry disabled.
+2026-10-21T08:06:36.3525709Z ##[group]Run actions/checkout@v4
+2026-10-21T08:06:36.3526346Z with:
+2026-10-21T08:06:36.3526926Z   repository: acme/cx-jaxrs-modeshape
+2026-10-21T08:06:36.3528228Z   token: ***
+2026-10-21T08:06:36.3528767Z   path: repos/cx-jaxrs-modeshape
+2026-10-21T08:06:36.3529670Z   fetch-depth: 1
+2026-10-21T08:06:36.3530174Z   ssh-strict: true
+2026-10-21T08:06:36.3530637Z   ssh-user: git
+2026-10-21T08:06:36.3531122Z   persist-credentials: true
+2026-10-21T08:06:36.3531663Z   clean: true
+2026-10-21T08:06:36.3532177Z   sparse-checkout-cone-mode: true
+2026-10-21T08:06:36.3532758Z   fetch-tags: false
+2026-10-21T08:06:36.3533242Z   show-progress: true
+2026-10-21T08:06:36.3533716Z   lfs: false
+2026-10-21T08:06:36.3534142Z   submodules: false
+2026-10-21T08:06:36.3534637Z   set-safe-directory: true
+2026-10-21T08:06:36.3535201Z   allow-unsafe-pr-checkout: false
+2026-10-21T08:06:36.3535766Z env:
+2026-10-21T08:06:36.3536231Z   ORGSCAN_SPEC: apisec-orgscan==1.0.0
+2026-10-21T08:06:36.3537045Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-21T08:06:36.3538021Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+2026-10-21T08:06:36.3538799Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-21T08:06:36.3539591Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-21T08:06:36.3540074Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-21T08:06:36.3540556Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+2026-10-21T08:06:36.3540975Z ##[endgroup]
+2026-10-21T08:06:36.4629993Z Syncing repository: acme/cx-jaxrs-modeshape
+2026-10-21T08:06:36.4657352Z ##[group]Getting Git version info
+2026-10-21T08:06:36.4658625Z Working directory is '/home/runner/work/org-scan/org-scan/repos/cx-jaxrs-modeshape'
+2026-10-21T08:06:36.4662789Z [command]/usr/bin/git version
+2026-10-21T08:06:36.4746181Z git version 2.55.0
+2026-10-21T08:06:36.4772711Z ##[endgroup]
+2026-10-21T08:06:36.4795294Z Temporarily overriding HOME='/home/runner/work/_temp/17625f0e-74f3-4d7d-8f45-d4150cdae0ac' before making global git config changes
+2026-10-21T08:06:36.4798061Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-21T08:06:36.4801223Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/org-scan/org-scan/repos/cx-jaxrs-modeshape
+2026-10-21T08:06:36.4873277Z ##[group]Initializing the repository
+2026-10-21T08:06:36.4875269Z [command]/usr/bin/git init /home/runner/work/org-scan/org-scan/repos/cx-jaxrs-modeshape
+2026-10-21T08:06:36.5036861Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-21T08:06:36.5042654Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-21T08:06:36.5043980Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-21T08:06:36.5045050Z hint: call:
+2026-10-21T08:06:36.5045707Z hint:
+2026-10-21T08:06:36.5055392Z hint: 	git config --global init.defaultBranch <name>
+2026-10-21T08:06:36.5056373Z hint:
+2026-10-21T08:06:36.5057488Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-21T08:06:36.5058682Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-21T08:06:36.5060160Z hint:
+2026-10-21T08:06:36.5060852Z hint: 	git branch -m <name>
+2026-10-21T08:06:36.5061534Z hint:
+2026-10-21T08:06:36.5062375Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-21T08:06:36.5063872Z Initialized empty Git repository in /home/runner/work/org-scan/org-scan/repos/cx-jaxrs-modeshape/.git/
+2026-10-21T08:06:36.5066991Z [command]/usr/bin/git remote add origin https://github.com/acme/cx-jaxrs-modeshape
+2026-10-21T08:06:36.5129284Z ##[endgroup]
+2026-10-21T08:06:36.5132139Z ##[group]Disabling automatic garbage collection
+2026-10-21T08:06:36.5141815Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-21T08:06:36.5200429Z ##[endgroup]
+2026-10-21T08:06:36.5202887Z ##[group]Setting up auth
+2026-10-21T08:06:36.5203971Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-21T08:06:36.5276341Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-21T08:06:36.5853433Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-21T08:06:36.5916081Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-21T08:06:36.6271084Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-21T08:06:36.6323533Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-21T08:06:36.6590086Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-21T08:06:36.6645496Z ##[endgroup]
+2026-10-21T08:06:36.6647009Z ##[group]Determining the default branch
+2026-10-21T08:06:36.6650796Z Retrieving the default branch name
+2026-10-21T08:06:36.9938450Z Default branch 'main'
+2026-10-21T08:06:36.9950867Z ##[endgroup]
+2026-10-21T08:06:36.9969945Z ##[group]Fetching the repository
+2026-10-21T08:06:37.0005277Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/main:refs/remotes/origin/main
+2026-10-21T08:06:38.4944875Z From https://github.com/acme/cx-jaxrs-modeshape
+2026-10-21T08:06:38.4945815Z  * [new branch]      main       -> origin/main
+2026-10-21T08:06:38.4970923Z ##[endgroup]
+2026-10-21T08:06:38.4971882Z ##[group]Determining the checkout info
+2026-10-21T08:06:38.4972888Z ##[endgroup]
+2026-10-21T08:06:38.4973651Z [command]/usr/bin/git sparse-checkout disable
+2026-10-21T08:06:38.5030303Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-21T08:06:38.5076242Z ##[group]Checking out the ref
+2026-10-21T08:06:38.5081225Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-21T08:06:38.8639643Z Switched to a new branch 'main'
+2026-10-21T08:06:38.8662705Z branch 'main' set up to track 'origin/main'.
+2026-10-21T08:06:38.8690419Z ##[endgroup]
+2026-10-21T08:06:38.8737198Z [command]/usr/bin/git log -1 --format=%H
+2026-10-21T08:06:38.8778485Z 67c732d41f426ec744df0fbd3c1ab6cdbc62b295
+2026-10-21T08:06:38.8956995Z ##[group]Run apisec-orgscan scan "repos/$REPO_NAME" --repo-id "$REPO_ID"
+2026-10-21T08:06:38.8957648Z [36;1mapisec-orgscan scan "repos/$REPO_NAME" --repo-id "$REPO_ID"[0m
+2026-10-21T08:06:38.9013976Z shell: /usr/bin/bash -e {0}
+2026-10-21T08:06:38.9014290Z env:
+2026-10-21T08:06:38.9014573Z   ORGSCAN_SPEC: apisec-orgscan==1.0.0
+2026-10-21T08:06:38.9014997Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-21T08:06:38.9015503Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+2026-10-21T08:06:38.9016198Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-21T08:06:38.9016661Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-21T08:06:38.9017123Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-21T08:06:38.9017584Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+2026-10-21T08:06:38.9018003Z   REPO_NAME: cx-jaxrs-modeshape
+2026-10-21T08:06:38.9018332Z   REPO_ID: 1331587996
+2026-10-21T08:06:38.9029697Z   APISEC_PAT: ***
+2026-10-21T08:06:38.9030045Z   APISEC_ENDPOINT: https://api.qa.apisecapps.com
+2026-10-21T08:06:38.9030427Z   APISEC_LLM_ENRICHMENT: 
+2026-10-21T08:06:38.9030714Z   RUN_PROFILE: surface
+2026-10-21T08:06:38.9030979Z   DRY_RUN: false
+2026-10-21T08:06:38.9031227Z ##[endgroup]
+2026-10-21T08:06:38.9816042Z profile=surface dry_run=False
+2026-10-21T08:06:39.3001071Z ╭─────────────────────────────── apisec-surface ───────────────────────────────╮
+2026-10-21T08:06:39.3014501Z │ Analyzing:                                                                   │
+2026-10-21T08:06:39.3040008Z │ /home/runner/work/org-scan/org-scan/repos/cx-jaxrs-modeshape   │
+2026-10-21T08:06:39.3059737Z │ Version: 1.0.0                                                               │
+2026-10-21T08:06:39.3064103Z ╰──────────────────────────────────────────────────────────────────────────────╯
+2026-10-21T08:06:58.4894403Z ⠼ Analyzing project...
+2026-10-21T08:06:58.4916662Z Analysis failed: substring not found
+2026-10-21T08:06:58.6684271Z ##[error]repos/cx-jaxrs-modeshape was not uploaded (exit 1); it is retried next run.
+2026-10-21T08:06:58.6766295Z ##[error]Process completed with exit code 1.
+2026-10-21T08:06:58.6911033Z Post job cleanup.
+2026-10-21T08:06:58.7929800Z [command]/usr/bin/git version
+2026-10-21T08:06:58.8004391Z git version 2.55.0
+2026-10-21T08:06:58.8065640Z Temporarily overriding HOME='/home/runner/work/_temp/e34f800b-f406-4372-990f-b9c9b076650c' before making global git config changes
+2026-10-21T08:06:58.8074276Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-21T08:06:58.8077690Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/org-scan/org-scan/repos/cx-jaxrs-modeshape
+2026-10-21T08:06:58.8172109Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-21T08:06:58.8231814Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-21T08:06:58.8670247Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-21T08:06:58.8729214Z http.https://github.com/.extraheader
+2026-10-21T08:06:58.8740946Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-21T08:06:58.8811180Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-21T08:06:58.9279831Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-21T08:06:58.9318048Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-21T08:06:58.9845053Z Cleaning up orphan processes
+2026-10-21T08:06:59.0143336Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

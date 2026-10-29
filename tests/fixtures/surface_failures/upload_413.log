@@ -1,0 +1,287 @@
+﻿2026-10-21T09:44:36.8287330Z Current runner version: '2.338.0'
+2026-10-21T09:44:36.8325769Z ##[group]Runner Image Provisioner
+2026-10-21T09:44:36.8327234Z Hosted Compute Agent
+2026-10-21T09:44:36.8328361Z Version: 20261015.610
+2026-10-21T09:44:36.8329503Z Commit: 267fdb4e8bbec4ab5ea31367f3a00d5c480c7656
+2026-10-21T09:44:36.8330927Z Build Date: 2026-10-14T17:06:54Z
+2026-10-21T09:44:36.8332190Z Worker ID: {e58361f1-70bb-4257-b689-5283fb950b9b}
+2026-10-21T09:44:36.8333434Z Region: eastus2
+2026-10-21T09:44:36.8334987Z Cloud: Azure
+2026-10-21T09:44:36.8335979Z ##[endgroup]
+2026-10-21T09:44:36.8339055Z ##[group]Operating System
+2026-10-21T09:44:36.8340204Z Ubuntu
+2026-10-21T09:44:36.8341188Z 24.04.5
+2026-10-21T09:44:36.8342249Z LTS
+2026-10-21T09:44:36.8343124Z ##[endgroup]
+2026-10-21T09:44:36.8344666Z ##[group]Runner Image
+2026-10-21T09:44:36.8345769Z Image: ubuntu-24.04
+2026-10-21T09:44:36.8346825Z Version: 20261018.339.1
+2026-10-21T09:44:36.8349113Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261018.339/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-21T09:44:36.8352012Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261018.339
+2026-10-21T09:44:36.8353803Z ##[endgroup]
+2026-10-21T09:44:36.8356315Z ##[group]GITHUB_TOKEN Permissions
+2026-10-21T09:44:36.8359350Z Actions: read
+2026-10-21T09:44:36.8360528Z Contents: read
+2026-10-21T09:44:36.8361536Z Metadata: read
+2026-10-21T09:44:36.8362617Z ##[endgroup]
+2026-10-21T09:44:36.8366293Z Secret source: Actions
+2026-10-21T09:44:36.8368060Z Cache mode: write
+2026-10-21T09:44:36.8369538Z Prepare workflow directory
+2026-10-21T09:44:36.8967368Z Prepare all required actions
+2026-10-21T09:44:36.9037100Z Getting action download info
+2026-10-21T09:44:37.1247986Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-21T09:44:37.2841407Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-21T09:44:37.3345262Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-21T09:44:37.5548384Z Uses: apisec-inc/apisec-orchestrator/.github/workflows/scan.yml@refs/tags/v1 (a27496defa6618533307d65e42c68d82eb816527)
+2026-10-21T09:44:37.5553019Z ##[group] Inputs
+2026-10-21T09:44:37.5553939Z   dry_run: false
+2026-10-21T09:44:37.5554692Z   force_full_scan: false
+2026-10-21T09:44:37.5555682Z   max_repos: 0
+2026-10-21T09:44:37.5556187Z   throughput: 0
+2026-10-21T09:44:37.5556661Z   runner: 
+2026-10-21T09:44:37.5557463Z   run_profile: 
+2026-10-21T09:44:37.5558146Z ##[endgroup]
+2026-10-21T09:44:37.5558846Z Complete job name: scan / Scan cx-dotnet-smartstore
+2026-10-21T09:44:37.6312529Z ##[group]Run actions/setup-python@v5
+2026-10-21T09:44:37.6313481Z with:
+2026-10-21T09:44:37.6313951Z   python-version: 3.11
+2026-10-21T09:44:37.6314681Z   check-latest: false
+2026-10-21T09:44:37.6318573Z   token: ***
+2026-10-21T09:44:37.6319037Z   update-environment: true
+2026-10-21T09:44:37.6319560Z   allow-prereleases: false
+2026-10-21T09:44:37.6320098Z   freethreaded: false
+2026-10-21T09:44:37.6320818Z env:
+2026-10-21T09:44:37.6321296Z   ORGSCAN_SPEC: apisec-orgscan==1.0.0
+2026-10-21T09:44:37.6321857Z ##[endgroup]
+2026-10-21T09:44:37.7988745Z (node:1944) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-21T09:44:37.7990980Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-21T09:44:37.8012222Z ##[group]Installed versions
+2026-10-21T09:44:37.8029527Z Successfully set up CPython (3.11.17)
+2026-10-21T09:44:37.8030519Z ##[endgroup]
+2026-10-21T09:44:37.8518799Z ##[group]Run pip install --quiet "$ORGSCAN_SPEC" "apisec-surface==$CLI_VERSION"
+2026-10-21T09:44:37.8520662Z [36;1mpip install --quiet "$ORGSCAN_SPEC" "apisec-surface==$CLI_VERSION"[0m
+2026-10-21T09:44:37.8522106Z [36;1mapisec-surface telemetry off || true[0m
+2026-10-21T09:44:37.8925600Z shell: /usr/bin/bash -e {0}
+2026-10-21T09:44:37.8926632Z env:
+2026-10-21T09:44:37.8927445Z   ORGSCAN_SPEC: apisec-orgscan==1.0.0
+2026-10-21T09:44:37.8929182Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-21T09:44:37.8930729Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+2026-10-21T09:44:37.8932340Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-21T09:44:37.8933823Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-21T09:44:37.8935580Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-21T09:44:37.8937128Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+2026-10-21T09:44:37.8938522Z   CLI_VERSION: 1.0.0
+2026-10-21T09:44:37.8939447Z ##[endgroup]
+2026-10-21T09:44:45.5289400Z 
+2026-10-21T09:44:45.5290432Z [notice] A new release of pip is available: 26.2.1 -> 26.2.2
+2026-10-21T09:44:45.5291516Z [notice] To update, run: pip install --upgrade pip
+2026-10-21T09:44:45.9520320Z Telemetry disabled.
+2026-10-21T09:44:45.9989787Z ##[group]Run actions/checkout@v4
+2026-10-21T09:44:45.9990169Z with:
+2026-10-21T09:44:45.9990513Z   repository: acme/cx-dotnet-smartstore
+2026-10-21T09:44:45.9991359Z   token: ***
+2026-10-21T09:44:45.9991669Z   path: repos/cx-dotnet-smartstore
+2026-10-21T09:44:46.0065812Z   fetch-depth: 1
+2026-10-21T09:44:46.0066293Z   ssh-strict: true
+2026-10-21T09:44:46.0066787Z   ssh-user: git
+2026-10-21T09:44:46.0067354Z   persist-credentials: true
+2026-10-21T09:44:46.0067973Z   clean: true
+2026-10-21T09:44:46.0068492Z   sparse-checkout-cone-mode: true
+2026-10-21T09:44:46.0069090Z   fetch-tags: false
+2026-10-21T09:44:46.0069581Z   show-progress: true
+2026-10-21T09:44:46.0070091Z   lfs: false
+2026-10-21T09:44:46.0070593Z   submodules: false
+2026-10-21T09:44:46.0071100Z   set-safe-directory: true
+2026-10-21T09:44:46.0071687Z   allow-unsafe-pr-checkout: false
+2026-10-21T09:44:46.0072300Z env:
+2026-10-21T09:44:46.0072795Z   ORGSCAN_SPEC: apisec-orgscan==1.0.0
+2026-10-21T09:44:46.0073678Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-21T09:44:46.0074889Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+2026-10-21T09:44:46.0075821Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-21T09:44:46.0076678Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-21T09:44:46.0077499Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-21T09:44:46.0078365Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+2026-10-21T09:44:46.0079115Z ##[endgroup]
+2026-10-21T09:44:46.1070952Z Syncing repository: acme/cx-dotnet-smartstore
+2026-10-21T09:44:46.1095745Z ##[group]Getting Git version info
+2026-10-21T09:44:46.1105480Z Working directory is '/home/runner/work/org-scan/org-scan/repos/cx-dotnet-smartstore'
+2026-10-21T09:44:46.1174807Z [command]/usr/bin/git version
+2026-10-21T09:44:46.1345491Z git version 2.55.0
+2026-10-21T09:44:46.1387577Z ##[endgroup]
+2026-10-21T09:44:46.1397502Z Temporarily overriding HOME='/home/runner/work/_temp/57624062-cc44-4b8e-92dc-321e1f6f59b3' before making global git config changes
+2026-10-21T09:44:46.1399439Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-21T09:44:46.1406294Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/org-scan/org-scan/repos/cx-dotnet-smartstore
+2026-10-21T09:44:46.1492508Z ##[group]Initializing the repository
+2026-10-21T09:44:46.1493954Z [command]/usr/bin/git init /home/runner/work/org-scan/org-scan/repos/cx-dotnet-smartstore
+2026-10-21T09:44:46.1636161Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-21T09:44:46.1645311Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-21T09:44:46.1649436Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-21T09:44:46.1650916Z hint: call:
+2026-10-21T09:44:46.1651785Z hint:
+2026-10-21T09:44:46.1652843Z hint: 	git config --global init.defaultBranch <name>
+2026-10-21T09:44:46.1655945Z hint:
+2026-10-21T09:44:46.1657481Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-21T09:44:46.1659016Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-21T09:44:46.1660438Z hint:
+2026-10-21T09:44:46.1661452Z hint: 	git branch -m <name>
+2026-10-21T09:44:46.1671466Z hint:
+2026-10-21T09:44:46.1672859Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-21T09:44:46.1675421Z Initialized empty Git repository in /home/runner/work/org-scan/org-scan/repos/cx-dotnet-smartstore/.git/
+2026-10-21T09:44:46.1679606Z [command]/usr/bin/git remote add origin https://github.com/acme/cx-dotnet-smartstore
+2026-10-21T09:44:46.1747129Z ##[endgroup]
+2026-10-21T09:44:46.1748290Z ##[group]Disabling automatic garbage collection
+2026-10-21T09:44:46.1749398Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-21T09:44:46.1806842Z ##[endgroup]
+2026-10-21T09:44:46.1808490Z ##[group]Setting up auth
+2026-10-21T09:44:46.1832425Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-21T09:44:46.1905634Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-21T09:44:46.2433121Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-21T09:44:46.2495848Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-21T09:44:46.2870474Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-21T09:44:46.2923981Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-21T09:44:46.3200967Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-21T09:44:46.3259573Z ##[endgroup]
+2026-10-21T09:44:46.3260591Z ##[group]Determining the default branch
+2026-10-21T09:44:46.3267198Z Retrieving the default branch name
+2026-10-21T09:44:46.6502103Z Default branch 'main'
+2026-10-21T09:44:46.6521771Z ##[endgroup]
+2026-10-21T09:44:46.6528187Z ##[group]Fetching the repository
+2026-10-21T09:44:46.6529664Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/main:refs/remotes/origin/main
+2026-10-21T09:44:47.8097213Z From https://github.com/acme/cx-dotnet-smartstore
+2026-10-21T09:44:47.8105092Z  * [new branch]      main       -> origin/main
+2026-10-21T09:44:47.8128556Z ##[endgroup]
+2026-10-21T09:44:47.8129512Z ##[group]Determining the checkout info
+2026-10-21T09:44:47.8132623Z ##[endgroup]
+2026-10-21T09:44:47.8134981Z [command]/usr/bin/git sparse-checkout disable
+2026-10-21T09:44:47.8204336Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-21T09:44:47.8250538Z ##[group]Checking out the ref
+2026-10-21T09:44:47.8255366Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-21T09:44:48.2919889Z Switched to a new branch 'main'
+2026-10-21T09:44:48.2924894Z branch 'main' set up to track 'origin/main'.
+2026-10-21T09:44:48.2947127Z ##[endgroup]
+2026-10-21T09:44:48.3053433Z [command]/usr/bin/git log -1 --format=%H
+2026-10-21T09:44:48.3081735Z d3a6d40b357e712dd7699143da5da3c8907f8e19
+2026-10-21T09:44:48.3270575Z ##[group]Run apisec-orgscan scan "repos/$REPO_NAME" --repo-id "$REPO_ID"
+2026-10-21T09:44:48.3271184Z [36;1mapisec-orgscan scan "repos/$REPO_NAME" --repo-id "$REPO_ID"[0m
+2026-10-21T09:44:48.3327165Z shell: /usr/bin/bash -e {0}
+2026-10-21T09:44:48.3327450Z env:
+2026-10-21T09:44:48.3327689Z   ORGSCAN_SPEC: apisec-orgscan==1.0.0
+2026-10-21T09:44:48.3328057Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-21T09:44:48.3328525Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+2026-10-21T09:44:48.3329184Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-21T09:44:48.3329603Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-21T09:44:48.3330026Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-21T09:44:48.3330437Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+2026-10-21T09:44:48.3330799Z   REPO_NAME: cx-dotnet-smartstore
+2026-10-21T09:44:48.3331074Z   REPO_ID: 1331585118
+2026-10-21T09:44:48.3341249Z   APISEC_PAT: ***
+2026-10-21T09:44:48.3341556Z   APISEC_ENDPOINT: https://api.qa.apisecapps.com
+2026-10-21T09:44:48.3341914Z   APISEC_LLM_ENRICHMENT: 
+2026-10-21T09:44:48.3342202Z   RUN_PROFILE: surface
+2026-10-21T09:44:48.3342440Z   DRY_RUN: false
+2026-10-21T09:44:48.3342653Z ##[endgroup]
+2026-10-21T09:44:48.3949059Z profile=surface dry_run=False
+2026-10-21T09:44:48.6955779Z ╭─────────────────────────────── apisec-surface ───────────────────────────────╮
+2026-10-21T09:44:48.6965084Z │ Analyzing:                                                                   │
+2026-10-21T09:44:48.6985172Z │ /home/runner/work/org-scan/org-scan/repos/cx-dotnet-smartstore │
+2026-10-21T09:44:48.7005190Z │ Version: 1.0.0                                                               │
+2026-10-21T09:44:48.7031246Z ╰──────────────────────────────────────────────────────────────────────────────╯
+2026-10-21T09:50:53.1385962Z ⠏ Analyzing project...
+2026-10-21T09:50:55.2116918Z 
+2026-10-21T09:50:55.2123910Z ✓ Manifest saved to 
+2026-10-21T09:50:55.2125335Z /home/runner/work/org-scan/org-scan/repos/cx-dotnet-smartstore/api
+2026-10-21T09:50:55.2128404Z sec/manifest.json
+2026-10-21T09:50:55.2128956Z 
+2026-10-21T09:50:55.2154705Z                    Analysis Summary                   
+2026-10-21T09:50:55.2155960Z ┏━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+2026-10-21T09:50:55.2157547Z ┃ Metric         ┃ Value                             ┃
+2026-10-21T09:50:55.2158857Z ┡━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+2026-10-21T09:50:55.2160357Z │ Project        │ cx-dotnet-smartstore              │
+2026-10-21T09:50:55.2161561Z │ Files Analyzed │ 3420                              │
+2026-10-21T09:50:55.2163478Z │ Files Failed   │ 0                                 │
+2026-10-21T09:50:55.2164962Z │ Routes Found   │ 1066                              │
+2026-10-21T09:50:55.2189610Z │ Functions      │ 16084                             │
+2026-10-21T09:50:55.2193123Z │ Classes        │ 3869                              │
+2026-10-21T09:50:55.2193955Z │ Frameworks     │ aspnet_webforms, aspnet_core, wcf │
+2026-10-21T09:50:55.2195040Z │ Analysis Time  │ 363328ms                          │
+2026-10-21T09:50:55.2195840Z └────────────────┴───────────────────────────────────┘
+2026-10-21T09:50:55.2196250Z 
+2026-10-21T09:50:55.2316011Z                          Routes Detected                          
+2026-10-21T09:50:55.2318947Z ┏━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+2026-10-21T09:50:55.2320177Z ┃ Method ┃ Path        ┃ Handler                                 ┃
+2026-10-21T09:50:55.2330674Z ┡━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+2026-10-21T09:50:55.2333707Z │ GET    │ *           │ ApplicationInitializerMiddleware.Invoke │
+2026-10-21T09:50:55.2334956Z │ POST   │ *           │ ApplicationInitializerMiddleware.Invoke │
+2026-10-21T09:50:55.2335794Z │ PUT    │ *           │ ApplicationInitializerMiddleware.Invoke │
+2026-10-21T09:50:55.2337285Z │ DELETE │ *           │ ApplicationInitializerMiddleware.Invoke │
+2026-10-21T09:50:55.2338242Z │ PATCH  │ *           │ ApplicationInitializerMiddleware.Invoke │
+2026-10-21T09:50:55.2339031Z │ GET    │ *           │ TaskSchedulerMiddleware.Invoke          │
+2026-10-21T09:50:55.2339786Z │ POST   │ *           │ TaskSchedulerMiddleware.Invoke          │
+2026-10-21T09:50:55.2340522Z │ PUT    │ *           │ TaskSchedulerMiddleware.Invoke          │
+2026-10-21T09:50:55.2341285Z │ DELETE │ *           │ TaskSchedulerMiddleware.Invoke          │
+2026-10-21T09:50:55.2342352Z │ PATCH  │ *           │ TaskSchedulerMiddleware.Invoke          │
+2026-10-21T09:50:55.2343104Z │ GET    │ *           │ MediaLegacyMiddleware.Invoke            │
+2026-10-21T09:50:55.2343831Z │ POST   │ *           │ MediaLegacyMiddleware.Invoke            │
+2026-10-21T09:50:55.2344824Z │ PUT    │ *           │ MediaLegacyMiddleware.Invoke            │
+2026-10-21T09:50:55.2345576Z │ DELETE │ *           │ MediaLegacyMiddleware.Invoke            │
+2026-10-21T09:50:55.2346405Z │ PATCH  │ *           │ MediaLegacyMiddleware.Invoke            │
+2026-10-21T09:50:55.2347232Z │ GET    │ *           │ MediaMiddleware.Invoke                  │
+2026-10-21T09:50:55.2348077Z │ POST   │ *           │ MediaMiddleware.Invoke                  │
+2026-10-21T09:50:55.2348863Z │ PUT    │ *           │ MediaMiddleware.Invoke                  │
+2026-10-21T09:50:55.2349659Z │ DELETE │ *           │ MediaMiddleware.Invoke                  │
+2026-10-21T09:50:55.2350539Z │ PATCH  │ *           │ MediaMiddleware.Invoke                  │
+2026-10-21T09:50:55.2351308Z │ ...    │ (1046 more) │ ...                                     │
+2026-10-21T09:50:55.2352097Z └────────┴─────────────┴─────────────────────────────────────────┘
+2026-10-21T09:50:55.2837022Z 
+2026-10-21T09:50:55.2858904Z ╭────────────────────────────── Cloud connection ──────────────────────────────╮
+2026-10-21T09:50:55.2860121Z │ Authenticated upload                                                         │
+2026-10-21T09:50:55.2863602Z │ Applicationsservice: https://api.qa.apisecapps.com                           │
+2026-10-21T09:50:55.2865548Z │ Repo: cx-dotnet-smartstore (main)                                            │
+2026-10-21T09:50:55.2867059Z │ Canonical id: github:1331585118                                              │
+2026-10-21T09:50:55.2868381Z ╰──────────────────────────────────────────────────────────────────────────────╯
+2026-10-21T09:51:11.0335936Z Manifest upload failed: server refused the manifest as too large: HTTP 413 Request Entity Too Large on POST /v1/applications/01a15dde-f5dd-790d-804c-248f32bfc09d/manifests — the manifest is 141,982,152 bytes serialized (5,710,849 bytes gzipped on the wire), above what the server accepts, so no analysis was created. Reduce the manifest (exclude vendored/generated files, or let monorepo partitioning upload sub-projects separately) or raise the server's request-body limit.
+2026-10-21T09:51:11.0478999Z 
+2026-10-21T09:51:11.0513241Z                               Verification Result                               
+2026-10-21T09:51:11.0514973Z ┏━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+2026-10-21T09:51:11.0518408Z Manifest upload failed — no analysis was created:
+2026-10-21T09:51:11.0525135Z server refused the manifest as too large: HTTP 413 Request Entity Too Large on 
+2026-10-21T09:51:11.0526077Z ┃ Metric             ┃ Value                                                   ┃
+2026-10-21T09:51:11.0527670Z POST /v1/applications/01a15dde-f5dd-790d-804c-248f32bfc09d/manifests — the 
+2026-10-21T09:51:11.0529448Z ┡━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+2026-10-21T09:51:11.0530412Z manifest is 141,982,152 bytes serialized (5,710,849 bytes gzipped on the wire), 
+2026-10-21T09:51:11.0533905Z │ Analysis ID        │ N/A                                                     │
+2026-10-21T09:51:11.0535139Z above what the server accepts, so no analysis was created. Reduce the manifest 
+2026-10-21T09:51:11.0536240Z │ Status             │ error                                                   │
+2026-10-21T09:51:11.0537148Z (exclude vendored/generated files, or let monorepo partitioning upload 
+2026-10-21T09:51:11.0538126Z │ Rounds             │ 0                                                       │
+2026-10-21T09:51:11.0539113Z sub-projects separately) or raise the server's request-body limit.
+2026-10-21T09:51:11.0540139Z │ Questions Answered │ 0                                                       │
+2026-10-21T09:51:11.0541291Z │ Duration           │ 3.9s                                                    │
+2026-10-21T09:51:11.0542313Z │ Error              │ server refused the manifest as too large: HTTP 413      │
+2026-10-21T09:51:11.0543350Z │                    │ Request Entity Too Large on POST                        │
+2026-10-21T09:51:11.0544609Z │                    │ /v1/applications/01a15dde-f5dd-790d-804c-248f32bfc09d/… │
+2026-10-21T09:51:11.0545666Z │                    │ — the manifest is 141,982,152 bytes serialized          │
+2026-10-21T09:51:11.0546656Z │                    │ (5,710,849 bytes gzipped on the wire), above what the   │
+2026-10-21T09:51:11.0547673Z │                    │ server accepts, so no analysis was created. Reduce the  │
+2026-10-21T09:51:11.0548684Z │                    │ manifest (exclude vendored/generated files, or let      │
+2026-10-21T09:51:11.0549720Z │                    │ monorepo partitioning upload sub-projects separately)   │
+2026-10-21T09:51:11.0550735Z │                    │ or raise the server's request-body limit.               │
+2026-10-21T09:51:11.0551759Z └────────────────────┴─────────────────────────────────────────────────────────┘
+2026-10-21T09:51:11.7212384Z ##[error]repos/cx-dotnet-smartstore was not uploaded (exit 2); it is retried next run.
+2026-10-21T09:51:11.7287956Z ##[error]Process completed with exit code 2.
+2026-10-21T09:51:11.7438658Z Post job cleanup.
+2026-10-21T09:51:12.1865884Z [command]/usr/bin/git version
+2026-10-21T09:51:12.1866384Z git version 2.55.0
+2026-10-21T09:51:12.1869331Z Temporarily overriding HOME='/home/runner/work/_temp/6e5f9922-55ce-4bee-bf37-6393dca7d405' before making global git config changes
+2026-10-21T09:51:12.1870806Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-21T09:51:12.1872322Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/org-scan/org-scan/repos/cx-dotnet-smartstore
+2026-10-21T09:51:12.1874663Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-21T09:51:12.1877275Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-21T09:51:12.1882614Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-21T09:51:12.1883624Z http.https://github.com/.extraheader
+2026-10-21T09:51:12.1885555Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-21T09:51:12.1888214Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-21T09:51:12.1890804Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-21T09:51:12.1892807Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-21T09:51:12.2200016Z Cleaning up orphan processes
+2026-10-21T09:51:12.2597147Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
