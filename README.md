@@ -21,7 +21,8 @@ sent to APIsec.
    verify setup (repos are analyzed locally; nothing is uploaded to APIsec).
 5. Run without **dry_run** to upload results. After that, scans run nightly at 02:00 UTC.
 
-For a first scan of a large org, set **max_repos** (e.g. `100`) and run until the plan is empty.
+For a first scan of a large org, set **max_repos** (e.g. `100`) and run until the plan is empty. To
+queue those runs with one command instead, see [Scanning a large org in batches](#scanning-a-large-org-in-batches).
 
 ### GitHub access
 
@@ -97,6 +98,28 @@ python3 surface_failures.py OWNER/REPO --since 7d
 
 It writes a summary of every failed job (which repository, why, and what to do) and a zip of the
 redacted logs to send to APIsec.
+
+## Scanning a large org in batches
+
+[`tools/surface_backfill.py`](tools/surface_backfill.py) runs the workflow several times in a row
+from your machine with the GitHub CLI, each run with its own **max_repos** and parallel scans. Each
+run starts when the previous one has finished, so it skips what the previous run scanned. The series
+stops early once there is nothing left to scan.
+
+```
+python3 surface_backfill.py OWNER/REPO --batch 25:2,100:4,200:6x5 --preview   # show the plan
+python3 surface_backfill.py OWNER/REPO --batch 25:2,100:4,200:6x5             # run it
+```
+
+A batch is `MAX_REPOS[:PARALLEL][xCOUNT]`: `200:6x5` is five runs of up to 200 repositories, 6 at a
+time. It needs Python 3.9+ and `gh` logged in with write access to OWNER/REPO, the repository that
+runs this workflow. Keep it running until the series ends. Runs that are already going continue on
+GitHub if it stops, and you can run it again with the batches that are left.
+
+PARALLEL is passed as the workflow's **throughput** input. Workflows made from an older template
+have no such input; for them, the script sets the repository variable `THROUGHPUT` for each run
+and restores it at the end, which requires admin access. If the script is interrupted before
+restoring it, run it again with `--restore-throughput`.
 
 ## Updates
 

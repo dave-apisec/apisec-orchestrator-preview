@@ -20,6 +20,10 @@ on:
         description: Maximum repositories this run (0 = no limit)
         type: number
         default: 0
+      throughput:
+        description: Max parallel scans (0 = THROUGHPUT variable, else 2)
+        type: number
+        default: 0
 
 permissions:
   contents: read
@@ -36,6 +40,7 @@ jobs:
       dry_run: ${{ inputs.dry_run == true }}
       force_full_scan: ${{ inputs.force_full_scan == true }}
       max_repos: ${{ fromJSON(inputs.max_repos || '0') }}
+      throughput: ${{ fromJSON(inputs.throughput || '0') }}
     secrets:
       APISEC_TOKEN: ${{ secrets.APISEC_TOKEN }}
       ORG_READ_TOKEN: ${{ secrets.ORG_READ_TOKEN }}
