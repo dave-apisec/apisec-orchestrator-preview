@@ -39,3 +39,4 @@ jobs:
     secrets:
       APISEC_TOKEN: ${{ secrets.APISEC_TOKEN }}
       ORG_READ_TOKEN: ${{ secrets.ORG_READ_TOKEN }}
+      ORCHESTRATOR_APP_PRIVATE_KEY: ${{ secrets.ORCHESTRATOR_APP_PRIVATE_KEY }}

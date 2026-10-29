@@ -59,7 +59,13 @@ def get_page(url: str, token: str) -> tuple[list, str | None]:
         try:
             with urllib.request.urlopen(request(url, token)) as resp:
                 page = json.loads(resp.read())
-                items = page if isinstance(page, list) else [page]
+                if isinstance(page, list):
+                    items = page
+                elif isinstance(page.get("repositories"), list):
+                    # /installation/repositories wraps each page in an object.
+                    items = page["repositories"]
+                else:
+                    items = [page]
                 return items, next_link(resp.headers.get("Link", ""))
         except urllib.error.HTTPError as exc:
             if exc.code == 404:
@@ -78,8 +84,8 @@ def get_page(url: str, token: str) -> tuple[list, str | None]:
                 f"  retry-after: {exc.headers.get('Retry-After')}\n"
                 f"  body: {body}\n"
                 f"  Hint: if remaining is not 0 this is NOT rate limiting. The token most likely "
-                f"lacks access to this resource; check that the fine-grained PAT is approved "
-                f"for the org and has Metadata: read."
+                f"lacks access to this resource; check that the GitHub App is installed on the org, "
+                f"or that the fine-grained PAT is approved for the org, with Metadata: read."
             )
     return [], None
 

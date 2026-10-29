@@ -42,7 +42,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  ORGSCAN_SPEC: apisec-orgscan~=1.0
+  ORGSCAN_SPEC: apisec-orgscan>=1.1,<2
 
 jobs:
   plan:
@@ -54,15 +54,42 @@ jobs:
       matrix: ${{ steps.plan.outputs.matrix }}
       run_profile: ${{ steps.plan.outputs.run_profile }}
       cli_version: ${{ steps.plan.outputs.cli_version }}
+      orgscan_version: ${{ steps.orgscan.outputs.version }}
       throughput: ${{ steps.plan.outputs.throughput }}
+    env:
+      # Steps cannot test secrets in `if:`, so decide app mode once per job.
+      USE_APP: ${{ vars.ORCHESTRATOR_APP_ID != '' && secrets.ORCHESTRATOR_APP_PRIVATE_KEY != '' }}
     steps:
+      # Installation tokens live one hour, so every job mints its own.
+      - name: Mint GitHub App token
+        id: app-token
+        if: env.USE_APP == 'true'
+        uses: actions/create-github-app-token@v3
+        with:
+          client-id: ${{ vars.ORCHESTRATOR_APP_ID }}
+          private-key: ${{ secrets.ORCHESTRATOR_APP_PRIVATE_KEY }}
+          owner: ${{ vars.TARGET_ORG || github.repository_owner }}
+          permission-contents: read
+      - name: Explain GitHub App failure
+        if: failure() && steps.app-token.outcome == 'failure'
+        env:
+          APP_ID: ${{ vars.ORCHESTRATOR_APP_ID }}
+          OWNER: ${{ vars.TARGET_ORG || github.repository_owner }}
+        run: |
+          echo "::error title=APIsec Surface::GitHub App $APP_ID (ORCHESTRATOR_APP_ID) could not get a token for '$OWNER'. Install the app on that org and grant it Contents: read and Metadata: read, or check ORCHESTRATOR_APP_PRIVATE_KEY."
+          exit 1
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: pip install --quiet "$ORGSCAN_SPEC"
+      # Newest compatible release, resolved once so every job in the run uses it.
+      - id: orgscan
+        run: |
+          pip install --quiet --upgrade "$ORGSCAN_SPEC"
+          echo "version=$(apisec-orgscan --version)" >> "$GITHUB_OUTPUT"
       - id: plan
         env:
           GITHUB_TOKEN: ${{ github.token }}
+          APP_TOKEN: ${{ steps.app-token.outputs.token }}
           ORG_READ_TOKEN: ${{ secrets.ORG_READ_TOKEN }}
           TARGET_ORG: ${{ vars.TARGET_ORG || github.repository_owner }}
           EXCLUDE_REPOS: ${{ vars.EXCLUDE_REPOS }}
@@ -85,32 +112,50 @@ jobs:
       matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
       max-parallel: ${{ fromJSON(needs.plan.outputs.throughput) }}
       fail-fast: false
+    env:
+      USE_APP: ${{ vars.ORCHESTRATOR_APP_ID != '' && secrets.ORCHESTRATOR_APP_PRIVATE_KEY != '' }}
     steps:
+      # Minted here rather than passed from plan: a run can outlast the token's
+      # hour. Narrowed to the one repo this job checks out.
+      - name: Mint GitHub App token
+        id: app-token
+        if: env.USE_APP == 'true'
+        uses: actions/create-github-app-token@v3
+        with:
+          client-id: ${{ vars.ORCHESTRATOR_APP_ID }}
+          private-key: ${{ secrets.ORCHESTRATOR_APP_PRIVATE_KEY }}
+          owner: ${{ vars.TARGET_ORG || github.repository_owner }}
+          repositories: ${{ matrix.repo_name }}
+          permission-contents: read
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       - name: Install
         env:
+          ORGSCAN_VERSION: ${{ needs.plan.outputs.orgscan_version }}
           CLI_VERSION: ${{ needs.plan.outputs.cli_version }}
         run: |
-          pip install --quiet "$ORGSCAN_SPEC" "apisec-surface==$CLI_VERSION"
+          pip install --quiet "apisec-orgscan==$ORGSCAN_VERSION" "apisec-surface==$CLI_VERSION"
           apisec-surface telemetry off || true
       - uses: actions/checkout@v4
         with:
           repository: ${{ matrix.repo_full_name }}
-          token: ${{ secrets.ORG_READ_TOKEN || github.token }}
+          token: ${{ steps.app-token.outputs.token || secrets.ORG_READ_TOKEN || github.token }}
           path: repos/${{ matrix.repo_name }}
           fetch-depth: 1
       - name: Analyze
         env:
           REPO_NAME: ${{ matrix.repo_name }}
           REPO_ID: ${{ matrix.repo_id }}
+          REPO_FULL_NAME: ${{ matrix.repo_full_name }}
+          SCANNED_BEFORE: ${{ matrix.scanned_before }}
           APISEC_PAT: ${{ secrets.APISEC_TOKEN }}
           APISEC_ENDPOINT: ${{ vars.APISEC_ENDPOINT }}
           APISEC_LLM_ENRICHMENT: ${{ vars.APISEC_LLM_ENRICHMENT }}
+          APISEC_REGISTRATION_CODE: ${{ vars.APISEC_REGISTRATION_CODE }}
           RUN_PROFILE: ${{ needs.plan.outputs.run_profile }}
           DRY_RUN: ${{ inputs.dry_run }}
-        run: apisec-orgscan scan "repos/$REPO_NAME" --repo-id "$REPO_ID"
+        run: apisec-orgscan scan "repos/$REPO_NAME" --repo-id "$REPO_ID" --repo-full-name "$REPO_FULL_NAME"
       - name: Record
         if: ${{ !inputs.dry_run }}
         env:
@@ -134,7 +179,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: pip install --quiet "$ORGSCAN_SPEC"
+      - env:
+          ORGSCAN_VERSION: ${{ needs.plan.outputs.orgscan_version }}
+        run: pip install --quiet "apisec-orgscan==$ORGSCAN_VERSION"
       - uses: actions/download-artifact@v4
         with:
           pattern: ts-update-*

@@ -18,7 +18,13 @@ def repo(rid, name="r", pushed="2026-01-01T00:00:00Z", **extra):
 def test_never_seen_repo_is_selected():
     out = select_candidates([repo(1)], cache={}, force_full_scan=False, cap=256)
     assert out == [
-        {"repo_id": "1", "repo_full_name": "org/r", "repo_name": "r", "pushed_at": "2026-01-01T00:00:00Z"}
+        {
+            "repo_id": "1",
+            "repo_full_name": "org/r",
+            "repo_name": "r",
+            "pushed_at": "2026-01-01T00:00:00Z",
+            "scanned_before": "false",
+        }
     ]
 
 
@@ -196,3 +202,42 @@ def test_token_is_not_forwarded_on_redirect():
     req = github.request("https://api.github.com/x", "secret")
     assert req.get_header("Authorization") == "Bearer secret"
     assert "Authorization" not in req.headers
+
+
+def test_get_page_unwraps_installation_repositories_across_pages(monkeypatch):
+    pages = iter(
+        [
+            FakeResp(
+                b'{"total_count": 2, "repositories": [{"id": 1}]}',
+                link='<https://api.github.com/installation/repositories?page=2>; rel="next"',
+            ),
+            FakeResp(b'{"total_count": 2, "repositories": [{"id": 2}]}'),
+        ]
+    )
+    monkeypatch.setattr(github.urllib.request, "urlopen", lambda _req: next(pages))
+    monkeypatch.setattr(github.time, "sleep", lambda _s: None)
+    url = "https://api.github.com/installation/repositories"
+    assert [r["id"] for r in github.get_paginated(url, "tok")] == [1, 2]
+
+
+def test_get_page_single_object_is_one_item(monkeypatch):
+    monkeypatch.setattr(github.urllib.request, "urlopen", lambda _req: FakeResp(b'{"id": 3}'))
+    assert github.get_page("https://api.github.com/x", "tok") == ([{"id": 3}], None)
+
+
+def test_installation_repos_sorted_most_recently_pushed_first(monkeypatch):
+    found = [
+        repo(1, pushed="2026-01-01T00:00:00Z"),
+        repo(2, pushed="2026-03-01T00:00:00Z"),
+        repo(3, pushed=None),
+    ]
+    seen = {}
+    monkeypatch.setattr(github, "get_paginated", lambda url, token: seen.setdefault("url", url) and found)
+    assert [r["id"] for r in repos.list_installation_repos("tok")] == [2, 1, 3]
+    assert seen["url"] == f"{github.API}/installation/repositories?per_page=100"
+
+
+def test_repo_in_the_store_is_marked_scanned_before():
+    cache = {"1": {"pushed_at": "2025-01-01T00:00:00Z"}}
+    out = select_candidates([repo(1)], cache=cache, force_full_scan=False, cap=256)
+    assert out[0]["scanned_before"] == "true"

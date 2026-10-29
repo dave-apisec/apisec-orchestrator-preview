@@ -1,8 +1,8 @@
-"""Keep release-pinned files in step with the package version.
+"""Keep the workflow files in step with the package version.
 
-Pins ``ORGSCAN_SPEC`` in the reusable workflow to the package version and
-regenerates the standalone template from the workflow's jobs. Run after
-bumping ``__version__``; ``--check`` fails if anything is out of date.
+Sets ``ORGSCAN_SPEC`` to the package's major line with this minor as the floor
+(``>=1.1,<2``) and regenerates the standalone template from the workflow's jobs.
+Run after bumping ``__version__``; ``--check`` fails if anything is out of date.
 """
 
 from __future__ import annotations
@@ -61,7 +61,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  ORGSCAN_SPEC: apisec-orgscan~={major}.{minor}
+  ORGSCAN_SPEC: {spec}
 
 """
 
@@ -73,17 +73,17 @@ def version() -> str:
 
 
 def expected() -> dict[Path, str]:
-    ver = version()
-    major, minor = ver.split(".")[:2]
+    major, minor = version().split(".")[:2]
+    spec = f"apisec-orgscan>={major}.{minor},<{int(major) + 1}"
     workflow = re.sub(
-        r"ORGSCAN_SPEC: apisec-orgscan==\S+",
-        f"ORGSCAN_SPEC: apisec-orgscan=={ver}",
+        r"ORGSCAN_SPEC: apisec-orgscan\S+",
+        f"ORGSCAN_SPEC: {spec}",
         WORKFLOW.read_text(encoding="utf-8"),
     )
     jobs = workflow[workflow.index("\njobs:\n") + 1 :]
     return {
         WORKFLOW: workflow,
-        STANDALONE: STANDALONE_HEADER.format(major=major, minor=minor) + jobs,
+        STANDALONE: STANDALONE_HEADER.format(spec=spec) + jobs,
     }
 
 

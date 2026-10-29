@@ -19,6 +19,16 @@ def list_org_repos(org: str, token: str) -> list[dict]:
     )
 
 
+def list_installation_repos(token: str) -> list[dict]:
+    """Repos a GitHub App installation token can see: the installation's selection.
+
+    This endpoint ignores sort parameters, so sort here the way list_org_repos
+    does; select_candidates keeps the most recently pushed repos when capped.
+    """
+    found = github.get_paginated(f"{github.API}/installation/repositories?per_page=100", token)
+    return sorted(found, key=lambda r: r.get("pushed_at") or "", reverse=True)
+
+
 def is_empty_repo(full_name: str, token: str) -> bool:
     """True only when the repo has no commits (GitHub answers 409)."""
     try:
@@ -57,6 +67,8 @@ def select_candidates(
                 "repo_full_name": repo["full_name"],
                 "repo_name": repo["name"],
                 "pushed_at": pushed_at,
+                # Uploaded by an earlier run, so APIsec holds it under its numeric id.
+                "scanned_before": "true" if repo_id in cache else "false",
             }
         )
         if len(candidates) >= cap:
